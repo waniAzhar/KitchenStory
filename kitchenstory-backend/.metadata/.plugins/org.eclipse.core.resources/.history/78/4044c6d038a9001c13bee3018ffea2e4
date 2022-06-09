@@ -1,0 +1,58 @@
+package com.example.kitchenstory.model;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+import org.springframework.transaction.annotation.EnableTransactionManagement;
+
+@Entity
+@EnableTransactionManagement
+
+public class Product {
+
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private int id;
+	private String imageUrl;
+	private String productTitle;
+	private String productDescription;
+	private String productPrice;
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	@Column(length = 50000)
+	public String getImageUrl() {
+		return imageUrl;
+	}
+	public void setImageUrl(String imageUrl) {
+		this.imageUrl = imageUrl;
+	}
+	public String getProductTitle() {
+		return productTitle;
+	}
+	public void setProductTitle(String productTitle) {
+		this.productTitle = productTitle;
+	}
+	public String getProductDescription() {
+		return productDescription;
+	}
+	public void setProductDescription(String productDescription) {
+		this.productDescription = productDescription;
+	}
+	public String getProductPrice() {
+		return productPrice;
+	}
+	public void setProductPrice(String productPrice) {
+		this.productPrice = productPrice;
+	}
+
+
+
+}

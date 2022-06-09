@@ -1,0 +1,46 @@
+package com.example.kitchenstory.controller;
+
+
+
+@RestController
+@CrossOrigin(origins = "http://localhost:4200")
+@RequestMapping("Kart")
+public class KartController {
+	@Autowired
+	KartRepository KR;
+	
+	@GetMapping("all")
+	public List<Kart> getAll()
+	{
+		List<Kart> a= (List<Kart>) KR.findAll();
+		return a;
+	}
+	
+	
+	@PostMapping("add")
+	public Kart addBook(@RequestBody Kart Kart)
+	{
+		return KR.save(Kart);
+	}
+	
+	// get particular student by their ID
+		@GetMapping("user/{id}")
+		public Optional<Kart> getUserById(@PathVariable int id)
+		{
+			return KR.findById(id);
+		}
+		
+		// update existing student 
+		@PutMapping("update/{id}")
+		public Kart updateUser(@RequestBody Kart Kart)
+		{
+			return KR.save(Kart);
+		}
+		
+		// delete particular student from database
+		@DeleteMapping("delete/{id}")
+		public void deleteUser(@PathVariable int id)
+		{
+			KR.deleteById(id);
+		}
+}

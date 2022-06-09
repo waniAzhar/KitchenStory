@@ -1,0 +1,43 @@
+<app-navbar></app-navbar>
+
+<!-- card -->
+
+<div class="container mt-3 ">
+<!-- search  -->
+  <div class="ml-auto mr-auto text-center col-6">
+    <div class="form-outline">
+      <label class="form-label" for="form1">Search</label>
+      <input id="search-focus" type="search" id="form1" class="form-control" [(ngModel)]="search" />
+
+    </div>
+  </div>
+  <div class="row mx-auto">
+
+<div *ngFor="let pro of product"  ><!-- col-lg-12 col-md-5 col-10 -->
+  <div *ngFor="let item of boughtitems"  >
+    <div *ngIf="pro.id == item.productId">
+  <section *ngIf="pro.productTitle.includes(search) ||pro.productDescription.includes(search) || search == '' " class="card   mt-4 ml-5 p-0" style="width: 18rem; ">
+  <img [src]="pro.imageUrl" class="card-img-top" alt="..." style="height: 250px;">
+  <div class="card-body">
+    <h5 class="card-title">{{pro.productTitle}}</h5>
+    <p class="card-text"  style="height: 100px;">{{pro.productDescription}}</p>
+    <h5 class="card-title">{{pro.productPrice | currency:'USD'}}</h5>
+    <h5>quantity: {{item.quantity}}</h5>
+    <h5>total: {{item.quantity * pro.productPrice}}</h5>
+
+  </div>
+</section>
+</div>
+</div>
+
+
+</div>
+
+
+</div>
+
+<section class="row  mt-5 text-center border">
+  <h1 class="col-6">Total price:{{total}}</h1>
+  <a class="col-6 h4 " routerLink="/payment">pay</a>
+</section>
+</div>

@@ -1,0 +1,68 @@
+package com.example.kitchenstory.controller;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.example.kitchenstory.model.Kart;
+import com.example.kitchenstory.repository.KartRepository;
+
+@RestController
+@CrossOrigin(origins = "http://localhost:4200")
+@RequestMapping("Kart")
+public class KartController {
+	@Autowired
+	KartRepository kartrepo;
+	
+	@GetMapping("all")
+	public List<Kart> getAll()
+	{
+		List<Kart> a= (List<Kart>) kartrepo.findAll();
+		return a;
+	}
+	
+	
+	@PostMapping("add")
+	public Kart addProduct(@RequestBody Kart Kart)
+	{
+		return kartrepo.save(Kart);
+	}
+	
+	// get particular student by their ID
+		@GetMapping("product/{id}")
+		public Optional<Kart> getProductById(@PathVariable int id)
+		{
+			return kartrepo.findById(id);
+		}
+		
+		// update existing student 
+		@PutMapping("update/{id}")
+		public Kart updateProduct(@RequestBody Kart Kart)
+		{
+			return kartrepo.save(Kart);
+		}
+		
+		// delete particular student from database
+		@DeleteMapping("delete/{id}")
+		public void deleteProduct(@PathVariable int id)
+		{
+			kartrepo.deleteById(id);
+		}
+		
+		// delete particular student from database
+		@DeleteMapping("deleteall")
+		public void deleteAll()
+		{
+			kartrepo.deleteAll();
+		}
+}

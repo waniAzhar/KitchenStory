@@ -1,0 +1,75 @@
+<app-navbar></app-navbar>
+
+<!-- card -->
+<div class="container mt-3 ">
+  <!-- search -->
+  <div class="ml-auto mr-auto text-center col-6">
+    <div class="form-outline">
+      <label class="form-label" for="form1">Search</label>
+      <input id="search-focus" type="search" id="form1" class="form-control" [(ngModel)]="search" />
+
+    </div>
+  </div>
+  <div *ngFor="let pro of product"  >
+
+    <section class="row mx-auto mt-5" *ngIf="pro.productTitle.includes(search) ||pro.productDescription.includes(search) || search == '' " >
+    <!-- separator -->
+    <div class="col-lg-1 "></div>
+
+    <!-- card -->
+<div   class="card col-12 col-lg-3 mt-3  col-md-5 p-0" style="width: 18rem; ">
+  <img [src]="pro.imageUrl" class="card-img-top" alt="..." style="height: 250px;">
+
+  <div class="card-body">
+    <h5 class="card-title">{{pro.productTitle}}</h5>
+    <p class="card-text"  style="height: 100px;">{{pro.productDescription}}</p>
+    <h5  class="card-title">{{pro.productPrice | currency:'USD'}}</h5>
+
+
+  </div>
+
+
+</div>
+
+<!-- separator -->
+<div class="col-lg-2 col-md-1"></div>
+
+
+    <!-- update card -->
+<form [formGroup]="updateForm" (ngSubmit)="updateForm"  class="card col-12 col-md-6 col-lg-6 mt-3 text-center" style="width: 18rem; ">
+
+
+  <div class="card-body mt-5 ">
+
+
+    <input  class="col-6 offset-1 mb-5 " type="text" name="ProductImage" formControlName="imageUrl" >
+
+
+    <input  class="col-6 offset-1 mb-5 " type="text" name="productTitle" formControlName="productTitle"  maxlength="20" >
+
+
+    <input  class="col-6 offset-1 mb-5 " type="text" name="productDescription" formControlName="productDescription"  maxlength="100">
+
+
+
+
+    <input  class="col-6 offset-1 mb-5 " type="number" name="productPrice"  formControlName="productPrice" >
+    <button class="col-4 offset-1 mb-5" (click)=" updateProduct(pro)" >update price</button>
+
+    <button class="btn btn-danger mt-3 col-8" (click)="deleteProduct(pro.id)">delete</button>
+
+  </div>
+
+
+</form>
+
+
+
+
+
+
+
+</section>
+</div>
+
+</div>

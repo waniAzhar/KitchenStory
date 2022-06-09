@@ -1,0 +1,10 @@
+package com.example.nimble.repository;
+
+import org.springframework.data.repository.CrudRepository;
+
+import com.example.nimble.model.MakeTest;
+
+
+public interface MakeTestRepository extends CrudRepository<MakeTest, Integer>{
+
+}

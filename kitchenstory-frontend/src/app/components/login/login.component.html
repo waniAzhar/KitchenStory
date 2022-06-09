@@ -1,0 +1,95 @@
+<app-navbar></app-navbar>
+<!-- login -->
+<div class="container col-sm-12">
+  <div class="row">
+    <div class="text-center col-sm-12">
+      <div class="mt-5">
+        <div class="login-heading">
+          <h1>Login</h1>
+        </div>
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm)">
+          <div class="form-group col-6 offset-3 mt-4">
+            <input
+              type="email"
+              class="form-control"
+              id="exampleInputEmail1"
+              aria-describedby="emailHelp"
+              [placeholder]="'email address'"
+              name="email"
+              formControlName="email"
+            />
+
+            <small
+              *ngIf="hasError('email')"
+              [class]="hasError('email') ? 'has-error' : ''"
+            >
+              <div>
+                <span *ngIf="email?.errors?.['required']"
+                  >email is a required field</span
+                >
+
+                <span *ngIf="email?.errors?.['email']"
+                  >please enter a valid email address</span
+                >
+              </div>
+            </small>
+          </div>
+          <div class="form-group col-6 offset-3 mt-4">
+            <input
+              type="password"
+              class="form-control"
+              id="exampleInputPassword1"
+              [placeholder]="'password'"
+              name="password"
+              formControlName="password"
+            />
+
+            <small
+              *ngIf="hasError('password')"
+              [class]="hasError('password') ? 'has-error' : ''"
+            >
+              <div>
+                <span *ngIf="password?.errors?.['required']"
+                  >password is a required field</span
+                >
+                <span *ngIf="password?.errors?.['minlength']"
+                  >password is a min 8 char long field</span
+                >
+              </div>
+            </small>
+          </div>
+
+          <div
+            class="form-group form-check offset-3 row"
+            style="text-align: start"
+          >
+            <input
+              type="checkbox"
+              class=""
+              id="rememberMe"
+              formControlName="rememberMe"
+            />
+            <label class="form-check-label ml-1 col-8" for="exampleCheck1"
+              >Remember me</label
+            >
+            <small
+              *ngIf="hasError('rememberMe')"
+              [class]="hasError('rememberMe') ? 'has-error' : ''"
+            >
+              <div>
+                <span *ngIf="rememberMe?.errors?.['required']"
+                  >rememberMe is a required field</span
+                >
+              </div>
+            </small>
+
+            <a class="col-12 row ml-3" routerLink="/register">register</a>
+          </div>
+
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+

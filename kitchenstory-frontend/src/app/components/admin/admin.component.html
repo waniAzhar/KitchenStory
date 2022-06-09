@@ -1,0 +1,32 @@
+<app-navbar></app-navbar>
+
+<!-- card -->
+<div class="container mt-5 ">
+  <div class="row mx-auto">
+
+<div class="card col-lg-6 col-md-5 col-10 mt-5 " style="width: 18rem;">
+  <h3 class="text-center">add product</h3>
+  <div class="form-group">
+    <form [formGroup]="addProductForm" (ngSubmit)="onSubmit(addProductForm)">
+  <div class="card-body">
+    <label for="book cover">add image URL</label>
+    <input type="url" class="form-control" name="imageUrl" formControlName="imageUrl">
+
+    <label for="book cover">Product name</label>
+    <input type="text" class="form-control" name="productTitle" formControlName="productTitle">
+    <label for="book cover">Description</label>
+    <input type="text" class="form-control" name="productDescription" formControlName="productDescription" maxlength="100">
+    <label for="book cover">price</label>
+    <input type="number" class="form-control" name="productPrice" formControlName="productPrice">
+    <button class="mt-2" type="submit">add Product</button>
+  </div>
+</form>
+</div>
+</div>
+<div class="card col-lg-6 col-md-5 col-10 mt-5 " style="width: 18rem;">
+<a class="text-center mt-auto mb-auto link-secondary"  routerLink="/manageproducts"><h1>manage products</h1></a>
+
+</div>
+
+</div>
+</div>

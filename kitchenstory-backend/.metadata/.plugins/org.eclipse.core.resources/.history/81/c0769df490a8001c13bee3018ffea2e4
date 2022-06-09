@@ -1,0 +1,12 @@
+
+# MySQL database connecting utility
+spring.datasource.url=jdbc:mysql://localhost:3306/kitchenstory
+spring.datasource.driver-class-name=com.mysql.jdbc.Driver
+spring.datasource.username=root
+spring.datasource.password=root
+spring.jpa.database=mysql
+
+# JPA property utility
+spring.jpa.hibernate.ddl-auto= update
+spring.jpa.properties.hibernate.show_sql=true
+#spring.jpa.properties.hibernate.sqldialect=org.hibernate.dialect.MySQL5InnoDBDialect

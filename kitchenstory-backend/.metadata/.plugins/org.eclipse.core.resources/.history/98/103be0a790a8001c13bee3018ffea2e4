@@ -1,0 +1,62 @@
+package com.example.nimble.controller;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.example.nimble.model.Answers;
+import com.example.nimble.repository.AnswerRepository;
+
+@RestController
+@CrossOrigin(origins = "http://localhost:4200")
+@RequestMapping("answers")
+public class AnswersController {
+	
+	@Autowired
+	AnswerRepository AnswerRepo;
+	
+	@GetMapping("all")
+	public List<Answers> getAll()
+	{
+		List<Answers> a= (List<Answers>) AnswerRepo.findAll();
+		return a;
+	}
+	
+	
+	@PostMapping("add")
+	public Answers addBook(@RequestBody Answers Answers)
+	{
+		return AnswerRepo.save(Answers);
+	}
+	
+	// get particular student by their ID
+		@GetMapping("user/{id}")
+		public Optional<Answers> getUserById(@PathVariable int id)
+		{
+			return AnswerRepo.findById(id);
+		}
+		
+		// update existing student 
+		@PutMapping("update/{id}")
+		public Answers updateUser(@RequestBody Answers Answers)
+		{
+			return AnswerRepo.save(Answers);
+		}
+		
+		// delete particular student from database
+		@DeleteMapping("delete/{id}")
+		public void deleteUser(@PathVariable int id)
+		{
+			AnswerRepo.deleteById(id);
+		}
+}

@@ -1,0 +1,42 @@
+<app-navbar></app-navbar>
+
+
+<!-- link to review products -->
+
+<!-- card -->
+
+<div class="container mt-3 ">
+  <!-- search  -->
+ <div class="ml-auto mr-auto text-center col-6">
+    <div class="form-outline">
+      <label class="form-label" for="form1">Search</label>
+      <input id="search-focus" type="search" id="form1" class="form-control" [(ngModel)]="search" />
+      <a class="card mt-3 h4" routerLink="/reviewProducts">review-products</a>
+    </div>
+  </div>
+  <div class="row mx-auto">
+
+<div *ngFor="let pro of product"  ><!-- col-lg-12 col-md-5 col-10 -->
+
+  <section *ngIf="pro.productTitle.includes(search) ||pro.productDescription.includes(search) || search == '' " class="card   mt-4 ml-5 p-0" style="width: 18rem; ">
+  <img [src]="pro.imageUrl" class="card-img-top" alt="..." style="height: 250px;">
+  <div class="card-body">
+    <h5 class="card-title">{{pro.productTitle}}</h5>
+    <p class="card-text"  style="height: 100px;">{{pro.productDescription}}</p>
+    <h5 class="card-title">{{pro.productPrice | currency:'USD'}}</h5>
+    <form [formGroup]="buyForm" (ngSubmit)="buyForm">
+    <button (click)="addToKart(pro.id)">buy</button>
+    <br>
+    <label for="">quantity</label>
+    <input type="number"formControlName="quantity" >
+  </form>
+  </div>
+</section>
+</div>
+
+
+
+
+
+</div>
+</div>

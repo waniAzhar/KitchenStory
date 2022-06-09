@@ -1,0 +1,5 @@
+package com.example.kitchenstory.model;
+
+public class Kart {
+
+}
